@@ -14,7 +14,7 @@ spring:
       path: /h2-console
 
 security:
-  secret: "[B@13[B@[B@13[B@1390a43a90a4[B@1390a43a3a1390a[B[B@1390a43a@13[B@1390[B@1390a43aa43a90a43a43a9[B@1390a43a0a43a"
+  secret: "123456[B@13[B@[B@13[B@1390a43a90a4[B@1390a43a3a1390a[B[B@1390a43a@13[B@1390[B@1390a43aa43a90a43a43a9[B@1390a43a0a43a"
   expiration-time: 60_000
   token-prefix: Bearer
   header-string: Authorization
