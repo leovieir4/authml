@@ -51,7 +51,7 @@ public class SecretManager {
     @Bean
     @Profile(ProfileConstants.LOCAL)
     public SecretData getSecretLocal() throws JsonProcessingException {
-
+        System.out.println("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< local");
         SecretData secretData = new SecretData();
         secretData.setSecret(securityConstants.getLocalSecret());
 
