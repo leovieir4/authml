@@ -27,9 +27,6 @@ public class SecretManager {
     @Bean
     @Profile(ProfileConstants.NOT_LOCAL)
     public SecretData getSecretAssin() throws JsonProcessingException {
-
-        System.out.println("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< não local");
-
         Region region = Region.of(Region.US_EAST_2.toString());
 
         SecretsManagerClient client = SecretsManagerClient.builder()
@@ -51,7 +48,6 @@ public class SecretManager {
     @Bean
     @Profile(ProfileConstants.LOCAL)
     public SecretData getSecretLocal() throws JsonProcessingException {
-        System.out.println("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< local");
         SecretData secretData = new SecretData();
         secretData.setSecret(securityConstants.getLocalSecret());
 
