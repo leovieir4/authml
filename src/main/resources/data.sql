@@ -1,0 +1,1 @@
+INSERT INTO UserML (username, password) VALUES ('usuariomercadolivre', '$2a$10$uA8Q2D/Ubwqw3/wTIkaM/O/ndiC78ixvDMk1v2VS6qhORXgOk6/oe');

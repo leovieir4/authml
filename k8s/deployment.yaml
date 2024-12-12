@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: autentication-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: autentication
+  template:
+    metadata:
+      labels:
+        app: autentication
+    spec:
+      containers:
+        - name: autentication
+          image: leodocker01/authml:latest # Sua imagem Docker
+          ports:
+            - containerPort: 8081
+          env:
+            - name: JWT_SECRET_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: jwt-secret
+                  key: secret
