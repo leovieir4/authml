@@ -9,7 +9,6 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import ml.autentication.model.UserML;
 import ml.autentication.util.SecurityConstants;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -55,11 +54,11 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
     @Override
     protected void successfulAuthentication(HttpServletRequest request, HttpServletResponse response, FilterChain chain,
                                             Authentication authResult) throws IOException, ServletException {
-        Key key = Keys.hmacShaKeyFor(securityConstants.getSECRET().getBytes(StandardCharsets.UTF_8));
+        Key key = Keys.hmacShaKeyFor(securityConstants.getLocalSecret().getBytes(StandardCharsets.UTF_8));
 
         String token = Jwts.builder()
                 .setSubject(((org.springframework.security.core.userdetails.User) authResult.getPrincipal()).getUsername())
-                .setExpiration(new Date(System.currentTimeMillis() + securityConstants.getEXPIRATION_TIME()))
+                .setExpiration(new Date(System.currentTimeMillis() + securityConstants.getExpiration_time()))
                 .signWith(key) // Assine com a chave secreta
                 .compact();
 

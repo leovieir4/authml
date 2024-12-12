@@ -19,3 +19,4 @@ security:
   token-prefix: Bearer
   header-string: Authorization
   rule-user: USER
+  secret-arn: arn:aws:secretsmanager:us-east-2:339712897027:secret:secret_assinatura_token-q5kHc0

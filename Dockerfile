@@ -3,4 +3,4 @@ WORKDIR /app
 COPY build/libs/*.jar app.jar
 EXPOSE 8081
 
-ENTRYPOINT ["java","-jar","app.jar"]
+ENTRYPOINT ["java", "-Dspring.profiles.active=not_local", "-jar", "app.jar"]

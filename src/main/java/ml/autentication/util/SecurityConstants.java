@@ -7,57 +7,68 @@ import org.springframework.stereotype.Component;
 public class SecurityConstants {
 
     @Value("${security.secret}")
-    private String SECRET;
+    private String localSecret;
 
     @Value("${security.expiration-time}")
-    private long EXPIRATION_TIME;
+    private long expiration_time;
 
     @Value("${security.token-prefix}")
-    private String TOKEN_PREFIX;
+    private String tokenPrefix;
 
     @Value("${security.header-string}")
-    private String HEADER_STRING;
+    private String header;
 
     @Value("${security.rule-user}")
-    private String RULE_USER;
+    private String ruleUser;
 
-    public String getRULE_USER() {
-        return RULE_USER;
+    @Value("${security.secret-arn}")
+    private String secretArn;
+
+    public String getRuleUser() {
+        return ruleUser;
     }
 
-    public void setRULE_USER(String RULE_USER) {
-        this.RULE_USER = RULE_USER;
+    public void setRuleUser(String ruleUser) {
+        this.ruleUser = ruleUser;
     }
 
-    public String getHEADER_STRING() {
-        return HEADER_STRING;
+    public String getHeader() {
+        return header;
     }
 
-    public void setHEADER_STRING(String HEADER_STRING) {
-        this.HEADER_STRING = HEADER_STRING;
+    public void setHeader(String header) {
+        this.header = header;
     }
 
-    public String getTOKEN_PREFIX() {
-        return TOKEN_PREFIX;
+    public String getTokenPrefix() {
+        return tokenPrefix;
     }
 
-    public void setTOKEN_PREFIX(String TOKEN_PREFIX) {
-        this.TOKEN_PREFIX = TOKEN_PREFIX;
+    public void setTokenPrefix(String tokenPrefix) {
+        this.tokenPrefix = tokenPrefix;
     }
 
-    public long getEXPIRATION_TIME() {
-        return EXPIRATION_TIME;
+    public long getExpiration_time() {
+        return expiration_time;
     }
 
-    public void setEXPIRATION_TIME(long EXPIRATION_TIME) {
-        this.EXPIRATION_TIME = EXPIRATION_TIME;
+    public void setExpiration_time(long expiration_time) {
+        this.expiration_time = expiration_time;
     }
 
-    public String getSECRET() {
-        return SECRET;
+    public String getLocalSecret() {
+        return localSecret;
     }
 
-    public void setSECRET(String SECRET) {
-        this.SECRET = SECRET;
+    public void setLocalSecret(String localSecret) {
+        this.localSecret = localSecret;
+    }
+
+    public String getSecretArn() {
+        return secretArn;
+    }
+
+    public void setSecretArn(String secretArn) {
+        this.secretArn = secretArn;
     }
 }

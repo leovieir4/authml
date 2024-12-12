@@ -7,7 +7,6 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import ml.autentication.util.SecurityConstants;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -30,11 +29,11 @@ public class JWTAuthorizationFilter extends BasicAuthenticationFilter {
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain)
             throws IOException, ServletException {
-        String header = request.getHeader(securityConstants.getHEADER_STRING());
+        String header = request.getHeader(securityConstants.getHeader());
 
         var url = request.getRequestURI();
 
-        if (header == null || !header.startsWith(securityConstants.getTOKEN_PREFIX())) {
+        if (header == null || !header.startsWith(securityConstants.getTokenPrefix())) {
             chain.doFilter(request, response);
             return;
         }
@@ -45,17 +44,17 @@ public class JWTAuthorizationFilter extends BasicAuthenticationFilter {
     }
 
     private UsernamePasswordAuthenticationToken getAuthentication(HttpServletRequest request) {
-        String token = request.getHeader(securityConstants.getHEADER_STRING());
+        String token = request.getHeader(securityConstants.getHeader());
 
         if (token != null) {
             try {
-                Key key = Keys.hmacShaKeyFor(securityConstants.getSECRET().getBytes(StandardCharsets.UTF_8));
+                Key key = Keys.hmacShaKeyFor(securityConstants.getLocalSecret().getBytes(StandardCharsets.UTF_8));
 
                 // Valida o token e extrai as claims
                 Jws<Claims> jwsClaims = Jwts.parserBuilder()
                         .setSigningKey(key)
                         .build()
-                        .parseClaimsJws(token.replace(securityConstants.getTOKEN_PREFIX(), ""));
+                        .parseClaimsJws(token.replace(securityConstants.getTokenPrefix(), ""));
 
                 // Extrai o username do token
                 String username = jwsClaims.getBody().getSubject();
