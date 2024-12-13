@@ -7,6 +7,7 @@ import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import ml.autentication.configs.data.SecretData;
 import ml.autentication.model.UserML;
 import ml.autentication.util.SecurityConstants;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -27,9 +28,13 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 
     private SecurityConstants securityConstants;
 
-    public JWTAuthenticationFilter(String url, AuthenticationManager authenticationManager, SecurityConstants securityConstants) {
+    private SecretData secretData;
+
+    public JWTAuthenticationFilter(String url, AuthenticationManager authenticationManager, SecurityConstants securityConstants, SecretData secretData) {
         this.authenticationManager = authenticationManager;
         this.securityConstants = securityConstants;
+        this.secretData = secretData;
+
         setFilterProcessesUrl(url);
     }
 
@@ -54,7 +59,7 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
     @Override
     protected void successfulAuthentication(HttpServletRequest request, HttpServletResponse response, FilterChain chain,
                                             Authentication authResult) throws IOException, ServletException {
-        Key key = Keys.hmacShaKeyFor(securityConstants.getLocalSecret().getBytes(StandardCharsets.UTF_8));
+        Key key = Keys.hmacShaKeyFor(secretData.getSecret().getBytes(StandardCharsets.UTF_8));
 
         String token = Jwts.builder()
                 .setSubject(((org.springframework.security.core.userdetails.User) authResult.getPrincipal()).getUsername())

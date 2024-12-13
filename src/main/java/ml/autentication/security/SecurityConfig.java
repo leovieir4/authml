@@ -2,6 +2,7 @@ package ml.autentication.security;
 
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
+import ml.autentication.configs.data.SecretData;
 import ml.autentication.filter.JWTAuthenticationFilter;
 import ml.autentication.filter.JWTAuthorizationFilter;
 import ml.autentication.service.UserDetailsServiceImpl;
@@ -29,6 +30,8 @@ public class SecurityConfig {
     private UserDetailsServiceImpl userDetailsService;
     @Autowired
     private SecurityConstants securityConstants;
+    @Autowired
+    private SecretData secretData;
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http, AuthenticationManager authenticationManager) throws Exception {
@@ -44,9 +47,9 @@ public class SecurityConfig {
                         .anyRequest().authenticated()
                 )
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-                .addFilterBefore(new JWTAuthenticationFilter("/auth/gerarToken", authenticationManager, securityConstants),
+                .addFilterBefore(new JWTAuthenticationFilter("/auth/gerarToken", authenticationManager, securityConstants, secretData),
                         UsernamePasswordAuthenticationFilter.class)
-                .addFilterBefore(new JWTAuthorizationFilter(authenticationManager, securityConstants),
+                .addFilterBefore(new JWTAuthorizationFilter(authenticationManager, securityConstants, secretData),
                         UsernamePasswordAuthenticationFilter.class);
 
         return http.build();

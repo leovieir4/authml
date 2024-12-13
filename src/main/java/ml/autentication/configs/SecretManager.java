@@ -26,7 +26,7 @@ public class SecretManager {
 
     @Bean
     @Profile(ProfileConstants.NOT_LOCAL)
-    public SecretData getSecretAssin() throws JsonProcessingException {
+    public SecretData getSecret() throws JsonProcessingException {
         Region region = Region.of(Region.US_EAST_2.toString());
 
         SecretsManagerClient client = SecretsManagerClient.builder()

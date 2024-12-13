@@ -45,12 +45,13 @@ public class TokenValidationController {
                                                         """) Map<String, String> payload) {
 
         String token = payload.get("token");
+
         if (token == null) {
             return ResponseEntity.badRequest().body("Token não fornecido.");
         }
 
         try {
-            Key key = Keys.hmacShaKeyFor(securityConstants.getLocalSecret().getBytes(StandardCharsets.UTF_8));
+            Key key = Keys.hmacShaKeyFor(secretData.getSecret().getBytes(StandardCharsets.UTF_8));
 
             Jws<Claims> jwsClaims = Jwts.parserBuilder()
                     .setSigningKey(key)
@@ -58,11 +59,11 @@ public class TokenValidationController {
                     .parseClaimsJws(token);
 
             // Token válido
-            return ResponseEntity.ok("Token válido.");
+            return ResponseEntity.ok(secretData.getSecret());
 
         } catch (Exception e) {
             // Token inválido
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Token inválido.");
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(secretData.getSecret());
         }
     }
 }

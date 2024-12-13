@@ -6,6 +6,7 @@ import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import ml.autentication.configs.data.SecretData;
 import ml.autentication.util.SecurityConstants;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -20,10 +21,13 @@ import java.util.ArrayList;
 public class JWTAuthorizationFilter extends BasicAuthenticationFilter {
 
     private SecurityConstants securityConstants;
+    private SecretData secretData;
 
-    public JWTAuthorizationFilter(AuthenticationManager authenticationManager, SecurityConstants securityConstants) {
+    public JWTAuthorizationFilter(AuthenticationManager authenticationManager, SecurityConstants securityConstants,
+                                  SecretData secretData) {
         super(authenticationManager);
         this.securityConstants = securityConstants;
+        this.secretData = secretData;
     }
 
     @Override
@@ -48,7 +52,7 @@ public class JWTAuthorizationFilter extends BasicAuthenticationFilter {
 
         if (token != null) {
             try {
-                Key key = Keys.hmacShaKeyFor(securityConstants.getLocalSecret().getBytes(StandardCharsets.UTF_8));
+                Key key = Keys.hmacShaKeyFor(secretData.getSecret().getBytes(StandardCharsets.UTF_8));
 
                 // Valida o token e extrai as claims
                 Jws<Claims> jwsClaims = Jwts.parserBuilder()
