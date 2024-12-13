@@ -64,7 +64,7 @@ public class TokenValidationController {
 
         } catch (Exception e) {
             // Token inválido
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(secretData.getSecret());
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Tonken inválido");
         }
     }
 }
