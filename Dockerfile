@@ -1,8 +1,7 @@
 FROM openjdk:21-jdk
 WORKDIR /app
 COPY build/libs/*.jar app.jar
-#COPY credentials /root/.aws/credentials para windows
-COPY credentials ~/.aws/credentials
+COPY credentials /root/.aws/credentials para windows
 EXPOSE 8081
 
 ENTRYPOINT ["java", "-Dspring.profiles.active=not_local", "-jar", "app.jar"]
