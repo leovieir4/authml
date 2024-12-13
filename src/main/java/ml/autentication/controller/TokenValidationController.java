@@ -12,6 +12,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import ml.autentication.configs.data.SecretData;
 import ml.autentication.util.SecurityConstants;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.DependsOn;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -59,11 +60,11 @@ public class TokenValidationController {
                     .parseClaimsJws(token);
 
             // Token válido
-            return ResponseEntity.ok(secretData.getSecret());
+            return ResponseEntity.ok("Token válido");
 
         } catch (Exception e) {
             // Token inválido
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(secretData.getSecret());
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Tonken inválido");
         }
     }
 }

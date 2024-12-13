@@ -1,8 +1,5 @@
 package ml.autentication.configs.data;
 
-import org.springframework.stereotype.Component;
-
-@Component
 public class SecretData {
 
     private String secret;
