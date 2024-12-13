@@ -33,7 +33,7 @@ for ($i = 90; $i -gt 0; $i--) {
 Write-Host "" # Pula uma linha após o término do carregamento
 
 # Abre a aplicação no navegador
-kubectl port-forward service/autentication-service 8081:80
+kubectl port-forward service/authentication-service 8081:80
 
 # Para o Minikube (opcional)
 # Se você quiser parar o Minikube após a implantação, descomente a linha abaixo:

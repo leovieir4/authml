@@ -1,4 +1,4 @@
-package ml.autentication.filter;
+package ml.authentication.filter;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.jsonwebtoken.Jwts;
@@ -7,9 +7,9 @@ import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import ml.autentication.configs.data.SecretData;
-import ml.autentication.model.UserML;
-import ml.autentication.util.SecurityConstants;
+import ml.authentication.configs.data.SecretData;
+import ml.authentication.model.UserML;
+import ml.authentication.util.SecurityConstants;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;

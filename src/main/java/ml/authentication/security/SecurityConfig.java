@@ -1,12 +1,10 @@
-package ml.autentication.security;
+package ml.authentication.security;
 
-import io.jsonwebtoken.SignatureAlgorithm;
-import io.jsonwebtoken.security.Keys;
-import ml.autentication.configs.data.SecretData;
-import ml.autentication.filter.JWTAuthenticationFilter;
-import ml.autentication.filter.JWTAuthorizationFilter;
-import ml.autentication.service.UserDetailsServiceImpl;
-import ml.autentication.util.SecurityConstants;
+import ml.authentication.configs.data.SecretData;
+import ml.authentication.filter.JWTAuthenticationFilter;
+import ml.authentication.filter.JWTAuthorizationFilter;
+import ml.authentication.service.UserDetailsServiceImpl;
+import ml.authentication.util.SecurityConstants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -19,8 +17,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-
-import java.security.Key;
 
 @Configuration
 @EnableWebSecurity

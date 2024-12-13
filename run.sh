@@ -34,7 +34,7 @@ done
 echo "" # Pula uma linha após o término do carregamento
 
 # Abre a aplicação no navegador (requer 'kubectl proxy' em outro terminal)
-kubectl port-forward service/autentication-service 8081:80 &
+kubectl port-forward service/authentication-service 8081:80 &
 
 echo "Aplicação disponível em http://localhost:8081/"
 

@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: autentication-deployment
+  name: authentication-deployment
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: autentication
+      app: authentication
   template:
     metadata:
       labels:
-        app: autentication
+        app: authentication
     spec:
       containers:
-        - name: autentication
+        - name: authentication
           image: leodocker01/authml:latest # Sua imagem Docker
           ports:
             - containerPort: 8081

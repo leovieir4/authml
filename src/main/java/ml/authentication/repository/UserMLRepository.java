@@ -1,6 +1,6 @@
-package ml.autentication.repository;
+package ml.authentication.repository;
 
-import ml.autentication.model.UserML;
+import ml.authentication.model.UserML;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

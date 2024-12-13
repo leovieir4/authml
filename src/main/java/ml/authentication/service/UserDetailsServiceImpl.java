@@ -1,8 +1,8 @@
-package ml.autentication.service;
+package ml.authentication.service;
 
-import ml.autentication.model.UserML;
-import ml.autentication.repository.UserMLRepository;
-import ml.autentication.util.SecurityConstants;
+import ml.authentication.model.UserML;
+import ml.authentication.repository.UserMLRepository;
+import ml.authentication.util.SecurityConstants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

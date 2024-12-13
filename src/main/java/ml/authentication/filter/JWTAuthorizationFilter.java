@@ -1,4 +1,4 @@
-package ml.autentication.filter;
+package ml.authentication.filter;
 
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.security.Keys;
@@ -6,8 +6,8 @@ import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import ml.autentication.configs.data.SecretData;
-import ml.autentication.util.SecurityConstants;
+import ml.authentication.configs.data.SecretData;
+import ml.authentication.util.SecurityConstants;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;

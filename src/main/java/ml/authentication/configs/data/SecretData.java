@@ -1,4 +1,4 @@
-package ml.autentication.configs.data;
+package ml.authentication.configs.data;
 
 public class SecretData {
 

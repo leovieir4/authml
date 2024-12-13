@@ -1,9 +1,7 @@
-package ml.autentication.controller;
+package ml.authentication.controller;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.ExampleObject;
-import ml.autentication.configs.SecretManager;
-import ml.autentication.model.UserML;
-import org.springframework.beans.factory.annotation.Autowired;
+import ml.authentication.model.UserML;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;

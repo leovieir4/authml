@@ -1,4 +1,4 @@
-package ml.autentication.util;
+package ml.authentication.util;
 
 public class ProfileConstants {
 
