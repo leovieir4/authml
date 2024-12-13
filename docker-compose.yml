@@ -7,6 +7,4 @@ services:
         JAR_FILE: app.jar
     ports:
       - "8081:8081"
-    volumes:
-      - ~/.aws/credentials:/root/.aws/credentials # Mantenha apenas este volume
     command: ["java", "-Dspring.profiles.active=not_local", "-jar", "app.jar"]
