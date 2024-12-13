@@ -15,7 +15,7 @@ public class SecurityConstants {
     @Value("${security.token-prefix}")
     private String tokenPrefix;
 
-    @Value("${security.header-string}")
+    @Value("${security.header}")
     private String header;
 
     @Value("${security.rule-user}")

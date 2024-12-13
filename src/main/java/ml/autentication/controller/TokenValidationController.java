@@ -59,11 +59,9 @@ public class TokenValidationController {
                     .build()
                     .parseClaimsJws(token);
 
-            // Token válido
             return ResponseEntity.ok("Token válido");
 
         } catch (Exception e) {
-            // Token inválido
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Tonken inválido");
         }
     }
